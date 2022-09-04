@@ -19,11 +19,10 @@ public class OperarVetor {
         // TODO code application logic here
         Scanner tcld = new Scanner(System.in);
         Vetor objVetor = new Vetor();
-        int op=1;        
-        
+        int op = 1;
 
         while (op != 0) {
-            System.out.println("\n\n\t\t\t___MENU___\n");
+            System.out.println("\n\n\t\t\t______MENU______\n");
             System.out.println("0. Para sair");
             System.out.println("Digite a opção desejada:");
             System.out.println("1. Insirir");
@@ -39,16 +38,17 @@ public class OperarVetor {
                     break;
 
                 case 2:
-                    System.out.println("op 2");
+                    System.out.println("Digite o índice para remoção: ");
+                    objVetor.remover(Integer.parseInt(tcld.nextLine()));
                     break;
 
                 case 3:
 
-                    System.out.println("op 3");
+                    objVetor.imprimir();
                     break;
 
                 case 0:
-                    System.out.println("op sair");
+                    System.out.println("Encerrando... :(");
 
                     break;
 
@@ -57,36 +57,56 @@ public class OperarVetor {
 
             }
         }
-        
 
     }
 
     public static class Vetor {
+
         public int vet[] = new int[5];
         public int ind;
-        
-        
-        public Vetor(){
-            ind = vet.length-1;
+
+        public Vetor() {
+            ind = vet.length - 1;
         }
-        
-        public void imprimir(){
-            for(int n: vet){
-                System.out.print(vet[n] + " ");
+
+        public void imprimir() {
+            System.out.println("Imprimindo vetor:");
+            
+            for (int n = 0; n < vet.length; n++) {
+                System.out.print(vet[n] + " | ");
             }
+            System.out.println("");
+            
         }
-        
-        public void inserir(int novo){
-            if(ind>-1){
+
+        public void inserir(int novo) {
+            if (ind > -1) {
                 vet[ind] = novo;
                 ind -= 1;
                 System.out.println("Inserido");
                 return;
             }
-            System.out.println("\n\t\t\tERRO! \n\t\t\tO Vetor esta cheio");
+            System.out.println("\n\t\t\tERRO! \n\t\tO Vetor esta cheio");
             return;
         }
-        
+
+        public void remover(int i) {
+            if (i >= ind && i < vet.length) {
+                vet[i] = 0;
+                ind++;
+                while (i > ind) {
+                    //this.imprimir();
+                    System.out.println("");
+                    vet[i] = vet[i - 1];
+                    vet[i - 1] = 0;
+                    i--;
+                }
+                //this.imprimir();
+            } else {
+                System.out.println("\n\t\t\tERRO! \n\t\tÍndice não existente");
+            }
+
+        }
 
     }
 
