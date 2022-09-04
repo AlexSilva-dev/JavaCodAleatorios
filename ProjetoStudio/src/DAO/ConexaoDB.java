@@ -20,15 +20,15 @@ public class ConexaoDB {
    
 
     public Connection conectarDB() {
-        String url = "jdbc:mysql://localhost:3306/ProjStudioDB";
-        String user = "root";
-        String senha = "12345678";
+        String url = "jdbc:mysql://localhost:3306/ProjStudioDB"; // url do banco que quero acessar
+        String user = "root";           // usuario do banco de dados
+        String senha = "12345678";      // senha do banco de dados
         Connection objConn = null;
 
         try
         {
-            objConn = DriverManager.getConnection(url, user, senha);
-            System.out.println("Deu certo");
+            objConn = DriverManager.getConnection(url, user, senha);    // O DriverManager.getConnection() - É onde vai ser estabelecido a conexão
+            
         } catch (SQLException erro)
         {
             JOptionPane.showMessageDialog(null, "ConexãoDAO " + erro.getMessage());

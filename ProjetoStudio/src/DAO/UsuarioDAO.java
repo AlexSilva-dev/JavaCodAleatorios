@@ -23,14 +23,16 @@ public class UsuarioDAO {
         objConn = new ConexaoDB().conectarDB();
 
         try{
-            String sql = "select * from usuario "
-                    + "where usuario = ? and senha = ?";
-            PreparedStatement pst = objConn.prepareStatement(sql);
-            pst.setString(1, objUsuario.getUsuario());
-            pst.setString(2, objUsuario.getPassword());
             
-            ResultSet resul = pst.executeQuery();
-            return resul;
+            // a String slq é onde vou por os comandos do MySQL
+            String sql = "select * from usuario "
+                    + "where usuario = ? and senha = ?";    
+            PreparedStatement pst = objConn.prepareStatement(sql);  // a classe PreparedStatement ira prepara o comando para ser executado no banco de dados
+            pst.setString(1, objUsuario.getUsuario());      // Coloca o argumento correspondente nos ? na String slq, o 1 se refere a qual ? substituir
+            pst.setString(2, objUsuario.getPassword());     // Substitui no segundo ?
+            
+            ResultSet objResul = pst.executeQuery();       // .executeQuery() - Executa o comando de fato
+            return objResul;
 
         } catch (SQLException erro){
             JOptionPane.showMessageDialog(null,"UsuarioDAO " + erro.getMessage());

@@ -15,7 +15,7 @@ create table cliente(
 
 describe acesso;
 
-create table acesso(
+create table usuario(
 	id int not null auto_increment,
 	nome varchar(30) not null,
     usuario char(20),
@@ -32,3 +32,13 @@ select * from usuario;
 
 select *from usuario where usuario = 'lek' and senha = '123451';
 
+use ProjStudioDB;
+
+alter table usuario 
+change column senha senha varchar(30);
+
+describe usuario;
+
+update usuario 
+set senha = 'alex123'
+where id = '1';
