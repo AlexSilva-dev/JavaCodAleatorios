@@ -23,8 +23,9 @@ public class OperarVetor {
 
         while (op != 0) {
             System.out.println("\n\n\t\t\t______MENU______\n");
-            System.out.println("0. Para sair");
             System.out.println("Digite a opção desejada:");
+            System.out.println("0. Para sair");
+            
             System.out.println("1. Insirir");
             System.out.println("2. Remover");
             System.out.println("3. Imprimir vetor");
@@ -53,7 +54,7 @@ public class OperarVetor {
                     break;
 
                 default:
-                    System.out.println("Opção invalida! Digite apenas uma das opções.");
+                    System.out.println("\nOpção invalida! Digite apenas uma das opções.");
 
             }
         }
@@ -62,16 +63,16 @@ public class OperarVetor {
 
     public static class Vetor {
 
-        public int vet[] = new int[5];
+        public Integer vet[] = new Integer[5];
         public int ind;
 
         public Vetor() {
-            ind = vet.length - 1;
+            ind = 0;
         }
 
         public void imprimir() {
-            System.out.println("Imprimindo vetor:");
-            
+            System.out.println("\nImprimindo vetor:");
+            System.out.print("| ");
             for (int n = 0; n < vet.length; n++) {
                 System.out.print(vet[n] + " | ");
             }
@@ -80,10 +81,10 @@ public class OperarVetor {
         }
 
         public void inserir(int novo) {
-            if (ind > -1) {
+            if (ind < vet.length) {
                 vet[ind] = novo;
-                ind -= 1;
-                System.out.println("Inserido");
+                ind += 1;
+                System.out.println("\nInserido");
                 return;
             }
             System.out.println("\n\t\t\tERRO! \n\t\tO Vetor esta cheio");
@@ -91,15 +92,15 @@ public class OperarVetor {
         }
 
         public void remover(int i) {
-            if (i >= ind && i < vet.length) {
-                vet[i] = 0;
-                ind++;
-                while (i > ind) {
+            if (i <= ind && i >= 0) {
+                vet[i] = null;
+                ind--;
+                while (i < ind) {
                     //this.imprimir();
                     System.out.println("");
-                    vet[i] = vet[i - 1];
-                    vet[i - 1] = 0;
-                    i--;
+                    vet[i] = vet[i + 1];
+                    vet[i + 1] = null;
+                    i++;
                 }
                 //this.imprimir();
             } else {
