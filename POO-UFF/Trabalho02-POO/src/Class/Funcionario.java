@@ -17,6 +17,30 @@ public class Funcionario {
     
     // Métodos
 
+    public Funcionario(int matricula, String nome, float salario, float deducao) {
+        this.matricula = matricula;
+        this.nome = nome;
+        this.salario = salario;
+        this.deducao = deducao;
+    }
+    
+    
+    public float SalarioLiquido(){
+        return salario - deducao;
+    }
+    
+    public String toString(){
+        String status;
+        status = "\n\tMatrícula: " + Integer.toString(matricula);
+        status += "\n\tNome: " + nome;
+        status += "\n\tSalário: " + Float.toString(salario);
+        status += "\n\tDedução: " + Float.toString(deducao);
+        status += "\n\tSalário líquido: " + Float.toString(SalarioLiquido());
+        return status;
+    }
+    
+    
+
     public int getMatricula() {
         return matricula;
     }
