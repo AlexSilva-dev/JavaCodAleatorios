@@ -45,6 +45,7 @@ public class Gerente extends Funcionario{
         status += "\n\tSalário: " + Float.toString(getSalario());
         status += "\n\tDedução: " + Float.toString(getDeducao());
         status += "\n\tSalário líquido: " + Float.toString(this.SalarioLiquido());
+        status += "\n\tDepartamento: " + this.departamento;
         return status;
     }
 
